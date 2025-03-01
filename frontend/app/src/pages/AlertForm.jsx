@@ -11,18 +11,22 @@ const AlertForm = () => {
     if (!symbol || !targetPrice || !contact) return alert("All fields required!");
 
     try {
-      await axios.post("http://localhost:8000/alert", {
+      const response = await axios.post("http://localhost:8000/alert", {
         symbol,
         target_price: parseFloat(targetPrice),
         user_contact: contact,
       });
 
       alert(`Alert set for ${symbol} at ${targetPrice}`);
+      console.log("Server Response:", response.data);  // ✅ Log response for debugging
       setSymbol("");
       setTargetPrice("");
       setContact("");
     } catch (error) {
       console.error("Error setting alert:", error);
+      if (error.response) {
+        console.log("Error Response:", error.response.data);
+      }
     }
   };
 
