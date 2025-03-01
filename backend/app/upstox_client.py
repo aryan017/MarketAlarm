@@ -11,13 +11,15 @@ class UpstoxClient:
             raise ValueError("API Key and Access Token must be set either via arguments or environment variables.")
 
     async def get_stock_price(self, symbol: str) -> float:
-        url = f"https://api.upstox.com/market/{symbol}"  # Ensure this is correct
-        headers = {"Authorization": f"Bearer {self.access_token}"}
+        formatted_symbol = f"NSE_EQ|{symbol}"
+        url = f"https://api.upstox.com/v2/market-quote/quotes?instrument_key={formatted_symbol}"  
+        headers = {"Authorization": f"Bearer {self.access_token}","Accept": "application/json"}
         
         async with httpx.AsyncClient() as client:
             try:
                 response = await client.get(url, headers=headers, timeout=10)
-                response.raise_for_status()  # Raise an error for 4xx/5xx responses
+                response.raise_for_status() 
+                print(response.json())
                 data = response.json()
                 return data.get("last_price", 0.0)
             except httpx.HTTPStatusError as http_err:
@@ -27,11 +29,11 @@ class UpstoxClient:
             except Exception as err:
                 print(f"Unexpected error fetching {symbol}: {err}")
 
-        return 0.0  # Return 0.0 if request fails
+        return 0.0  
 
     async def monitor_stock(self, symbol: str, target: float, callback):
         while True:
-            price = await self.get_stock_price(symbol)  # Use async method
+            price = await self.get_stock_price(symbol)  
             if price >= target:
                 try:
                     await callback(f"{symbol} crossed target: {price}")
