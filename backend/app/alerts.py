@@ -18,13 +18,13 @@ upstox_client = UpstoxClient(api_key=os.getenv("UPSTOX_API_KEY"), access_token=o
 
 @router.post("/alert")
 async def create_alert(alert: Alert):
-    # Save the alert to MongoDB.
+
     alerts_collection.insert_one(alert.dict())
 
-    # Start monitoring for this alert.
+    
     asyncio.create_task(
         upstox_client.monitor_stock(alert.symbol, alert.target_price, broadcast_message)
     )
 
-    return {"status": "Alert created"}  # ✅ Removed extra comma
+    return {"status": "Alert created"}  
 

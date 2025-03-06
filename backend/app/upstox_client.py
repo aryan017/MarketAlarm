@@ -1,6 +1,6 @@
 import asyncio
 import httpx
-
+import json
 
 class UpstoxClient:
     def __init__(self, api_key: str = None, access_token: str = None):
@@ -19,9 +19,9 @@ class UpstoxClient:
             try:
                 response = await client.get(url, headers=headers, timeout=10)
                 response.raise_for_status() 
-                print(response.json())
-                data = response.json()
-                return data.get("last_price", 0.0)
+                res=json.loads(json.dumps(response.json()))
+                print(type(res))
+                return res["data"]["NSE_EQ:RELIANCE"]["last_price"]
             except httpx.HTTPStatusError as http_err:
                 print(f"HTTP error fetching {symbol}: {http_err}")
             except httpx.RequestError as req_err:

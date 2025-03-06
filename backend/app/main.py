@@ -27,4 +27,11 @@ async def websocket_endpoint(websocket: WebSocket):
             print("Received:", data)
     except WebSocketDisconnect:
         clients.remove(websocket)
+        
+async def broadcast_message(message: str):
+    for client in clients:
+        try:
+            await client.send_text(message)
+        except Exception as e:
+            print("Error sending message:", e)
 

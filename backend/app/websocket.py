@@ -1,3 +1,5 @@
+from app.main import clients
+
 async def broadcast_message(message: str):
     for client in clients:
         try:
