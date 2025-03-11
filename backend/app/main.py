@@ -1,6 +1,7 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from app.alerts import router as alert_router
+from app.websocket_manager import clients
 import asyncio
 
 app = FastAPI()
@@ -14,9 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-clients = []
-
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -28,10 +26,5 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         clients.remove(websocket)
         
-async def broadcast_message(message: str):
-    for client in clients:
-        try:
-            await client.send_text(message)
-        except Exception as e:
-            print("Error sending message:", e)
+
 

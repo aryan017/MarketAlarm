@@ -20,8 +20,8 @@ class UpstoxClient:
                 response = await client.get(url, headers=headers, timeout=10)
                 response.raise_for_status() 
                 res=json.loads(json.dumps(response.json()))
-                print(type(res))
-                return res["data"]["NSE_EQ:RELIANCE"]["last_price"]
+                symbol = next(iter(res['data']))
+                return res["data"][symbol]["last_price"]
             except httpx.HTTPStatusError as http_err:
                 print(f"HTTP error fetching {symbol}: {http_err}")
             except httpx.RequestError as req_err:
@@ -34,6 +34,8 @@ class UpstoxClient:
     async def monitor_stock(self, symbol: str, target: float, callback):
         while True:
             price = await self.get_stock_price(symbol)  
+            print(price)
+            print(target)
             if price >= target:
                 try:
                     await callback(f"{symbol} crossed target: {price}")

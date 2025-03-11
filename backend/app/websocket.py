@@ -1,4 +1,4 @@
-from app.main import clients
+from app.websocket_manager import clients
 
 async def broadcast_message(message: str):
     for client in clients:

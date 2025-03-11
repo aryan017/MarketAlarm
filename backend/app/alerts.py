@@ -28,3 +28,4 @@ async def create_alert(alert: Alert):
 
     return {"status": "Alert created"}  
 
+
