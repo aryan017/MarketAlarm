@@ -6,3 +6,8 @@ pymongo
 twilio 
 boto3 
 python-dotenv
+finnhub-python
+pyjwt
+passlib[bcrypt]
+python-multipart
+
