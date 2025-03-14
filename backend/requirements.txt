@@ -8,6 +8,7 @@ boto3
 python-dotenv
 finnhub-python
 pyjwt
+pydantic[email]
 passlib[bcrypt]
 python-multipart
 
