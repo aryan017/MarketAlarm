@@ -19,6 +19,7 @@ class UpstoxClient:
             try:
                 response = await client.get(url, headers=headers, timeout=10)
                 response.raise_for_status() 
+                print(response.json())
                 return response.json()
             except httpx.HTTPStatusError as http_err:
                 print(f"HTTP error fetching {symbol}: {http_err}")

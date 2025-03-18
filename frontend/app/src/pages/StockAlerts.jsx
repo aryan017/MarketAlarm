@@ -14,14 +14,14 @@ const StockAlerts = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-lg bg-gray-800 p-4 rounded-lg shadow-lg mt-5">
-      <h2 className="text-xl font-semibold mb-3">📢 Real-Time Stock Alerts</h2>
-      <ul className="space-y-2">
+    <div>
+      <h2>📢 Real-Time Stock Alerts</h2>
+      <ul>
         {messages.length === 0 ? (
-          <p className="text-gray-400">No alerts yet...</p>
+          <p>No alerts yet...</p>
         ) : (
           messages.map((msg, index) => (
-            <li key={index} className="bg-gray-700 p-2 rounded-lg">
+            <li key={index}>
               {msg}
             </li>
           ))

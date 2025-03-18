@@ -1,14 +1,26 @@
 import React from "react";
-import StockAlerts from "./pages/StockAlerts";
-import AlertForm from "./pages/AlertForm";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
+import { AuthContext } from "./context/authContext";
+
+function CheckAuthentication({ element }) {
+  const { isAuthenticated } = useContext(AuthContext);
+  return isAuthenticated ? element : <Navigate to="/login" replace />;
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-5">
-      <h1 className="text-3xl font-bold mb-6">📈 Real-Time Stock Alert System</h1>
-      <AlertForm />
-      <StockAlerts />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<CheckAuthentication element={<Dashboard />} />} />
+      </Routes>
+    </Router>
   );
 }
 

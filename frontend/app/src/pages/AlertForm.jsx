@@ -11,14 +11,21 @@ const AlertForm = () => {
     if (!symbol || !targetPrice || !contact) return alert("All fields required!");
 
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.post("http://localhost:8000/alert", {
         symbol,
         target_price: parseFloat(targetPrice),
         user_contact: contact,
-      });
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
       alert(`Alert set for ${symbol} at ${targetPrice}`);
-      console.log("Server Response:", response.data);  // ✅ Log response for debugging
+      console.log("Server Response:", response.data); 
       setSymbol("");
       setTargetPrice("");
       setContact("");
@@ -31,32 +38,29 @@ const AlertForm = () => {
   };
 
   return (
-    <div className="w-full max-w-lg bg-gray-800 p-4 rounded-lg shadow-lg">
-      <h2 className="text-xl font-semibold mb-3">📌 Set a Stock Alert</h2>
-      <form onSubmit={handleSubmit} className="space-y-3">
+    <div>
+      <h2> Set a Stock Alert</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Stock Symbol (e.g., AAPL)"
+          placeholder="Stock Symbol"
           value={symbol}
           onChange={(e) => setSymbol(e.target.value)}
-          className="w-full p-2 rounded bg-gray-700 text-white"
         />
         <input
           type="number"
           placeholder="Target Price"
           value={targetPrice}
           onChange={(e) => setTargetPrice(e.target.value)}
-          className="w-full p-2 rounded bg-gray-700 text-white"
         />
         <input
           type="text"
           placeholder="Email or Phone"
           value={contact}
           onChange={(e) => setContact(e.target.value)}
-          className="w-full p-2 rounded bg-gray-700 text-white"
         />
-        <button type="submit" className="w-full p-2 bg-blue-500 rounded-lg">
-          Set Alert 🚀
+        <button type="submit">
+          Set Alert
         </button>
       </form>
     </div>

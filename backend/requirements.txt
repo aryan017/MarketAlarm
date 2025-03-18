@@ -2,7 +2,7 @@ fastapi
 uvicorn 
 websockets 
 redis 
-pymongo
+motor
 twilio 
 boto3 
 python-dotenv
@@ -11,4 +11,6 @@ pyjwt
 pydantic[email]
 passlib[bcrypt]
 python-multipart
+python-jose
+
 

@@ -17,4 +17,8 @@ class User(BaseModel):
     
     def hash_password(self):
         self.password = pwd_context.hash(self.password)
+        
+class Login_Request(BaseModel):
+    email: EmailStr
+    password: str
     
