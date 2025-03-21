@@ -19,7 +19,7 @@ class UpstoxClient:
             try:
                 response = await client.get(url, headers=headers, timeout=10)
                 response.raise_for_status() 
-                print(response.json())
+                ##print(response.json())
                 return response.json()
             except httpx.HTTPStatusError as http_err:
                 print(f"HTTP error fetching {symbol}: {http_err}")
@@ -34,12 +34,12 @@ class UpstoxClient:
         alert_sent = False
         while True:
             res = await self.get_stock_detail(symbol)  
-            print(res)
+            ##print(res)
             stock_symbol = next(iter(res['data']))
             stock=res["data"][stock_symbol]["symbol"]
             price=res["data"][stock_symbol]["last_price"]
-            print(price)
-            print(target)
+            ##print(price)
+            ##print(target)
             if not alert_sent and price >= target:
                 try:
                     await callback(f"{stock} crossed target price: Rs {target} by Current Price: Rs {price}")

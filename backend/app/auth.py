@@ -50,6 +50,7 @@ async def signup(user : User):
 
 @router.post("/login")
 async def login(user: Login_Request):
+        print(user)
         logged_in_User = await users_collection.find_one({"email" : user.email})
         if not user or not verify_password(user.password,logged_in_User["password"]):
             raise HTTPException(status_code=401, detail="Invalid credentials")

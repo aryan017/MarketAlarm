@@ -35,5 +35,6 @@ async def create_alert(alert: Alert,request : Request):
         )
 
         return {"status": "Alert created"}  
+    
 
 

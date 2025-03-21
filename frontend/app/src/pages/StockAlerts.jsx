@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 const StockAlerts = () => {
+  const token = localStorage.getItem("token");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8000/ws");
+    const ws = new WebSocket(`ws://localhost:8000/ws?token=${token}`);
 
     ws.onmessage = (event) => {
       setMessages((prev) => [...prev, event.data]);
     };
 
-    return () => ws.close();
   }, []);
 
   return (

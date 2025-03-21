@@ -25,7 +25,11 @@ const AuthProvider = ({ children }) => {
       const response = await axios.post("http://localhost:8000/login", {
         email,
         password,
-      });
+      },
+      {
+        headers: { "Content-Type": "application/json" }
+      }
+    );
       setIsAuthenticated(true);
       saveToken(response.data.access_token);
       await fetchUser();
