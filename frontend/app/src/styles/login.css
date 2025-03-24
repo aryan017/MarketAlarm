@@ -1,0 +1,157 @@
+/* General styles */
+  
+  /* Container styles */
+  .login-container {
+    background-color: white;
+    width: 100%;
+    max-width: 28rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  /* Header styles */
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .icon-container {
+    background-color: #dbeafe;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+  }
+  
+  .icon-container svg {
+    width: 2rem;
+    height: 2rem;
+    color: #2563eb;
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+  }
+  
+  .login-subtitle {
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  /* Form styles */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: absolute;
+    inset-y: 0;
+    left: 0.75rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    color: #9ca3af;
+  }
+  
+  .input-field {
+    width: 87%;
+    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+  }
+  
+  .input-field:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  }
+  
+  /* Remember me & Forgot password */
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .remember-me input {
+    width: 1rem;
+    height: 1rem;
+    color: #2563eb;
+    margin-right: 0.5rem;
+  }
+  
+  .forgot-password {
+    font-weight: 500;
+    color: #2563eb;
+    cursor: pointer;
+  }
+  
+  .forgot-password:hover {
+    color: #1e40af;
+  }
+  
+  /* Button styles */
+  .submit-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #2563eb;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #1e40af;
+  }
+  
+  .submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  }
+  
+  /* Sign up link */
+  .sign-up {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .sign-up a {
+    font-weight: 500;
+    color: #2563eb;
+  }
+  
+  .sign-up a:hover {
+    color: #1e40af;
+  }
+  

@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import { AuthContext } from "./context/authContext";
+import AlertForm from "./pages/AlertForm";
+import StockAlerts from "./pages/StockAlerts";
 
 function CheckAuthentication({ element }) {
   const { isAuthenticated } = useContext(AuthContext);
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/create-alert" element={<CheckAuthentication element={<AlertForm />} />}/>
+        <Route path="/my-alerts" element={<CheckAuthentication element={<StockAlerts />} />}/>
         <Route path="/dashboard" element={<CheckAuthentication element={<Dashboard />} />} />
       </Routes>
     </Router>

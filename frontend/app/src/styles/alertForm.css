@@ -1,0 +1,107 @@
+/* Container Styling */
+.alert-form-container {
+    width: 100%;
+    max-width: 28rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  /* Header Styling */
+  .alert-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .alert-form-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-left: 0.75rem;
+  }
+  
+  /* Input Field Styling */
+  .input-group {
+    position: relative;
+  }
+  
+  .input-group .icon {
+    position: absolute;
+    inset-y: 0;
+    left: 0.75rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    color: #a0aec0;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.625rem 0.75rem 0.625rem 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #1a202c;
+    placeholder-color: #a0aec0;
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  }
+  
+  /* Button Styling */
+  .submit-button {
+    width: 100%;
+    background-color: #4f46e5;
+    color: white;
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .submit-button:hover {
+    background-color: #4338ca;
+  }
+  
+  .submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Error & Success Messages */
+  .alert-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .error-message {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+  }
+  
+  .success-message {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+  }
+  
+  /* Footer Text */
+  .footer-text {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+  }
+  
